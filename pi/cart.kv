@@ -1,0 +1,17 @@
+#:kivy 1.11.1
+
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import sm __main__.sm
+
+<DefaultScreen>:
+    # set default background color as white
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            size: root.size
+    # set animation directions
+    on_pre_enter:
+        sm.transition.direction = 'left'
+    on_pre_leave:
+        sm.transition.direction = 'right'
