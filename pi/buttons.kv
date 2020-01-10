@@ -1,0 +1,9 @@
+#:kivy 1.11.1
+
+<RoundedButton>
+    background_color: 0, 0, 0, 0
+    canvas.before:
+        Color:
+            rgb: (0, 0.5, 0.8) if self.state == 'normal' else (0, 0.4, 0.6)
+        RoundedRectangle:
+            size: self.parent.size

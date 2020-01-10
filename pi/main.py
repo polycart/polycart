@@ -1,34 +1,25 @@
 #!/usr/bin/python3
 
-import kivy
-import sys, os
+import cartinit
 from kivy.app import App
 from kivy.uix.screenmanager import Screen, ScreenManager, SlideTransition
-from kivy.config import Config
 from kivy.lang import Builder
-
-kivy.require('1.11.1')
-
-# change working directory to the containing directory of main.py
-os.chdir(sys.path[0])
-
-# config cursor and fullscreen, also can be write in config.ini
-Config.set('graphics', 'fullscreen', 'auto')
-Config.set('graphics', 'show_cursor', False)
-Config.write()
+from buttons import RoundedButton
 
 # create ScreenManager as root, put all screens into
 sm = ScreenManager()
+sm.transition = SlideTransition()
 screens = []
 
 # load kv files
-Builder.load_file('cart.kv')
-
+Builder.load_file('screens.kv')
 
 class DefaultScreen(Screen):
-    # DefaultScreen类，用于派生子类
+    # DefaultScreen, other screen should be subclass of DefaultScreen
     pass
 
+class MainScreen(DefaultScreen):
+    # main menu on startup
 
 class CartApp(App):
     # main app
@@ -39,5 +30,5 @@ class CartApp(App):
 if __name__ == '__main__':
     app = CartApp()
     screens.append(DefaultScreen())
-    sm.switch_to(screens[0])
+    sm.switch_to(screens[-1])
     app.run()
