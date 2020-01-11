@@ -17,4 +17,5 @@ from kivy.config import Config
 
 Config.set('graphics', 'fullscreen', 'auto')
 Config.set('graphics', 'show_cursor', False)
+Config.set('graphics', 'maxfps', 24)
 Config.write()
