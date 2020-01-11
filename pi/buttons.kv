@@ -1,7 +1,9 @@
 #:kivy 1.11.1
+#:import titleFont cartfonts.titleFont
 
 <RoundedButton>
     background_color: 0, 0, 0, 0
+    font_name: titleFont
     canvas.before:
         Color:
             rgb: (0, 0.5, 0.8) if self.state == 'normal' else (0, 0.4, 0.6)
