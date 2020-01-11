@@ -6,6 +6,8 @@ from kivy.uix.screenmanager import Screen, ScreenManager, SlideTransition
 from kivy.lang import Builder
 from buttons import RoundedButton
 
+cartinit.init()
+
 # create ScreenManager as root, put all screens into
 sm = ScreenManager()
 sm.transition = SlideTransition()
@@ -22,7 +24,6 @@ class DefaultScreen(Screen):
 
 class MainScreen(DefaultScreen):
     # main menu on startup
-
     pass
 
 
