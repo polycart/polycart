@@ -10,7 +10,6 @@ os.chdir(sys.path[0])
 # check kv version
 import kivy
 from kivy.config import Config
-from kivy.resources import resource_add_path
 
 
 def init():
@@ -21,6 +20,3 @@ def init():
     Config.set('graphics', 'show_cursor', False)
     Config.set('graphics', 'maxfps', 24)
     Config.write()
-
-    # add resources path
-    resource_add_path('./fonts/')
