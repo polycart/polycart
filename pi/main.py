@@ -14,12 +14,17 @@ screens = []
 # load kv files
 Builder.load_file('screens.kv')
 
+
 class DefaultScreen(Screen):
     # DefaultScreen, other screen should be subclass of DefaultScreen
     pass
 
+
 class MainScreen(DefaultScreen):
     # main menu on startup
+
+    pass
+
 
 class CartApp(App):
     # main app
@@ -29,6 +34,6 @@ class CartApp(App):
 
 if __name__ == '__main__':
     app = CartApp()
-    screens.append(DefaultScreen())
+    screens.append(MainScreen())
     sm.switch_to(screens[-1])
     app.run()

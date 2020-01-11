@@ -12,11 +12,17 @@
             rgb: 1, 1, 1
         Rectangle:
             size: root.size
-    # set animation directions
-    on_pre_enter:
-        sm.transition.direction = 'left'
-    on_pre_leave:
-        sm.transition.direction = 'right'
 
 <MainScreen>
     # main menu on startup
+    GridLayout:
+        spacing: (20, 20)
+        rows: 2
+        RoundedButton:
+            text: '1'
+        RoundedButton:
+            text: '2'
+        RoundedButton:
+            text: '3'
+        RoundedButton:
+            text: '4'
