@@ -2,6 +2,7 @@
   <dictionary name="leylee">
     <words>
       <w>kivy</w>
+      <w>maxfps</w>
       <w>screenmanager</w>
     </words>
   </dictionary>
