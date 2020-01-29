@@ -1,0 +1,38 @@
+#:kivy 1.11.1
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import sm __main__.sm
+#:import screens __main__.screens
+#:import RoundedButton buttons.RoundedButton
+
+<DefaultGridLayout>:
+    size:(600, 360)
+
+<DefaultScreen>:
+    # set default background color as white
+    size: (800, 480)
+    canvas.before:
+        Color:
+            rgb: 0, 0.8, 1
+        Rectangle:
+            size: root.size
+
+
+<MainScreen>:
+    # main menu on startup
+    DefaultGridLayout:
+        spacing: (20, 20)
+        size_hint: 0.8, 0.8
+        center: self.parent.center
+        rows: 2
+        RoundedButton:
+            font_size:50
+            text: '商品导航'
+        RoundedButton:
+            font_size:50
+            text: '已购商品'
+        RoundedButton:
+            font_size:50
+            text: '每日推荐'
+        RoundedButton:
+            font_size:50
+            text: '结算支付'
