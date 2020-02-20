@@ -46,7 +46,7 @@
 
 * TimeOut：表示套接字连接请求超时，可能因自身或服务器的网络问题导致
 
-当**state**状态为**"Connected"**时，可以发送信息，否则不可发送。
+当**state**状态为**Connected**时，可以发送信息，否则不可发送。
 
 ---
 
@@ -71,7 +71,7 @@
 
 从服务器接收一条字符串
 
-**返回值：**接收的消息，类型为**string**
+**返回值：** 接收的消息，类型为 **string**
 
 ---
 
@@ -79,7 +79,7 @@
 
 从服务器接收一条byte串
 
-**返回值：**接收的消息，类型为**bytes**
+**返回值：** 接收的消息，类型为 **bytes**
 
 ---
 
@@ -123,7 +123,7 @@
 * key：密钥，类型为**int**
 * iv：初始向量，类型为**int**
 
-**返回值：**加密的结果（密文），类型为**bytes**
+**返回值：** 加密的结果（密文），类型为**bytes**
 
 ---
 
@@ -137,7 +137,7 @@
 * key：密钥，类型为**int**
 * iv：初始向量，类型为**int**
 
-**返回值：**解密的结果（明文），类型为**string**
+**返回值：** 解密的结果（明文），类型为**string**
 
 ---
 
@@ -149,7 +149,7 @@
 
 * data：待哈希的字符串，类型为**string**
 
-**返回值：**散列函数的结果（哈希值），类型为**int**
+**返回值：** 散列函数的结果（哈希值），类型为**int**
 
 ---
 
@@ -163,9 +163,9 @@
 * m：个人明码构成要素之一，类型为**int**，最大为**24byte**
 * Private_Secret_Code：个人暗码，类型为**int**，最大为**24byte**
 
-**返回值：**元组：**(Private_Open_Code, Private_Secret_Code)**
+**返回值：** 元组：**(Private_Open_Code, Private_Secret_Code)**
 
-* Private_Open_Code：个人明码，类型为**tuple**，格式为**(N, m, P)**
+* Private_Open_Code：个人明码，类型为**tuple**，格式为(N, m, P)
 * Private_Secret_Code：个人暗码，类型为**int**
 
 ---
@@ -176,10 +176,10 @@
 
 **参数：**
 
-* Private_Open_Code：收件人的个人明码，类型为**tuple**，格式为**(N,m,P)**
-* **Communication_secret_Code：**通信暗码，类型为**int**，最大为**24byte**
+* Private_Open_Code：收件人的个人明码，类型为**tuple**，格式为(N,m,P)
+* Communication_secret_Code：通信暗码，类型为**int**，最大为**24byte**
 
-**返回值：**元组：**(Communication_Open_Code, Communication_Secret_Code, Key)**
+**返回值：** 元组：**(Communication_Open_Code, Communication_Secret_Code, Key)**
 
 * Communication_Open_Code：通信明码，类型为**int**
 * Communication_Secret_Code：通信暗码，类型为**int**
@@ -195,7 +195,7 @@
 
 * Communication_Open_Code：通信明码，类型为**int**
 
-* m：个人明码**(N, m, P)**中的**m**，类型为**int**
+* m：个人明码(N, m, P)中的m，类型为**int**
 * Private_Secret_Code：个人暗码，类型为**int**
 
-返回值：通信密钥**Key**，类型为**int**
+**返回值：** 通信密钥**Key**，类型为**int**
