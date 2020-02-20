@@ -1,4 +1,4 @@
-# polycart
+# PolyCart
  A smart shopping cart with CV.
 ## UPD_1.29
 The **"Widget Deviation"** puzzled me several days, it has many puzzling things such as if we turn the **fullscreen** off and change the size of the window, the abnormal **widget** will move to where it should be.
@@ -16,3 +16,11 @@ All in all, the update includes:
 - create a new class **DefaultGridLayout** to default the size or other properties of  **GridLayout**
 - in **CartApp**.build(), declare a **Screen** and put the **MainScreen(Widget)** in, then put it in the **sm(ScreenManager)** 
 - other small changes such as *font_size* and *show_cursor*, blabla...
+
+## UPD_2.20
+
+* Add **Base**, which includes some basic code of the project.
+  * Add **clientsocket.py** to **Base**
+  * Add **pyDes.py** to **Base**
+  * Add **crypto.py** to **Base**
+* Read **README.md** in **Base** for more information
