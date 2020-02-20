@@ -18,25 +18,25 @@
 
 ---
 
-#### TcpCliSock.host
+### TcpCliSock.host
 
 连接到的主机地址，类型为**string**。例如：*“175.24.57.48”*
 
 ---
 
-#### TcpCliSock.port
+### TcpCliSock.port
 
 程序通信的端口，类型为**int**。默认为：*21567*
 
 ---
 
-#### TcpCliSock.bufsiz
+### TcpCliSock.bufsiz
 
 接收信息最大长度，类型为**int**，单位为**Byte**。默认为：*1024*
 
 ---
 
-#### TcpCliSock.state
+### TcpCliSock.state
 
 连接状态，类型为**string**。
 
@@ -50,7 +50,7 @@
 
 ---
 
-#### TcpCliSock.send(sign, data)
+### TcpCliSock.send(sign, data)
 
 向服务器发送一条消息
 
@@ -67,7 +67,7 @@
 
 ---
 
-#### TcpCliSock.recvstr()
+### TcpCliSock.recvstr()
 
 从服务器接收一条字符串
 
@@ -75,7 +75,7 @@
 
 ---
 
-#### TcpCliSock.recvbyte()
+### TcpCliSock.recvbyte()
 
 从服务器接收一条byte串
 
@@ -83,7 +83,7 @@
 
 ---
 
-#### TcpCliSock.close()
+### TcpCliSock.close()
 
 关闭客户端套接字
 
@@ -113,7 +113,7 @@
 
 ---
 
-#### encrypt(data, key, iv)
+### encrypt(data, key, iv)
 
 字符串加密函数
 
@@ -127,7 +127,7 @@
 
 ---
 
-#### decrypt(data, key, iv)
+### decrypt(data, key, iv)
 
 密文解密函数
 
@@ -141,7 +141,7 @@
 
 ---
 
-#### hash(data)
+### hash(data)
 
 单向散列函数
 
@@ -153,7 +153,7 @@
 
 ---
 
-#### Make_Private_Code(N, m, Private_Secret_Code)
+### Make_Private_Code(N, m, Private_Secret_Code)
 
 计算**FKE**中的个人码（*Private Code*）
 
@@ -170,7 +170,7 @@
 
 ---
 
-#### Make_Communication_Code(Private_Open_Code, Communication_secret_Code)
+### Make_Communication_Code(Private_Open_Code, Communication_secret_Code)
 
 计算**FKE**中的通信码（*Communication Code*）和密钥（*Key*）
 
@@ -187,7 +187,7 @@
 
 ---
 
-#### Make_Key(Communication_Open_Code, m, Private_Secret_Code)
+### Make_Key(Communication_Open_Code, m, Private_Secret_Code)
 
 计算通信密钥（*Key*）
 
