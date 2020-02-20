@@ -40,11 +40,11 @@
 
 连接状态，类型为**string**。
 
-* **Connected：**表示套接字成功连接，可以进行通信
+* Connected：表示套接字成功连接，可以进行通信
 
-* **Refused：**表示套接字连接请求被拒绝
+* Refused：表示套接字连接请求被拒绝
 
-* **TimeOut：**表示套接字连接请求超时，可能因自身或服务器的网络问题导致
+* TimeOut：表示套接字连接请求超时，可能因自身或服务器的网络问题导致
 
 当**state**状态为**"Connected"**时，可以发送信息，否则不可发送。
 
@@ -56,14 +56,14 @@
 
 **参数：**
 
-* **sign：**请求标识符，类型为**string**，由为三位大写的字母构成，用于服务器识别此消息的类型。若值为**None**，则不发送请求标识符。
+* sign：请求标识符，类型为**string**，由为三位大写的字母构成，用于服务器识别此消息的类型。若值为**None**，则不发送请求标识符。
 
-* **data：**发送的消息，类型为**string**。若值为**None**，则不发送消息
+* data：发送的消息，类型为**string**。若值为**None**，则不发送消息
 
 **返回值：**
 
-* **True：**消息发送成功
-* **False：**消息发送失败
+* True：消息发送成功
+* False：消息发送失败
 
 ---
 
@@ -119,9 +119,9 @@
 
 **参数：**
 
-* **data： **待加密的字符串（明文），类型为**string**
-* **key：**密钥，类型为**int**
-* **iv：**初始向量，类型为**int**
+* data： 待加密的字符串（明文），类型为**string**
+* key：密钥，类型为**int**
+* iv：初始向量，类型为**int**
 
 **返回值：**加密的结果（密文），类型为**bytes**
 
@@ -133,9 +133,9 @@
 
 **参数：**
 
-* **data：**待解密的密文，类型为**bytes**
-* **key：**密钥，类型为**int**
-* **iv：**初始向量，类型为**int**
+* data：待解密的密文，类型为**bytes**
+* key：密钥，类型为**int**
+* iv：初始向量，类型为**int**
 
 **返回值：**解密的结果（明文），类型为**string**
 
@@ -147,7 +147,7 @@
 
 **参数：**
 
-* **data：**待哈希的字符串，类型为**string**
+* data：待哈希的字符串，类型为**string**
 
 **返回值：**散列函数的结果（哈希值），类型为**int**
 
@@ -159,14 +159,14 @@
 
 **参数：**
 
-* **N：**个人明码构成要素之一，类型为**int**，最大为**24byte**
-* **m：**个人明码构成要素之一，类型为**int**，最大为**24byte**
-* **Private_Secret_Code：**个人暗码，类型为**int**，最大为**24byte**
+* N：个人明码构成要素之一，类型为**int**，最大为**24byte**
+* m：个人明码构成要素之一，类型为**int**，最大为**24byte**
+* Private_Secret_Code：个人暗码，类型为**int**，最大为**24byte**
 
 **返回值：**元组：**(Private_Open_Code, Private_Secret_Code)**
 
-* **Private_Open_Code：**个人明码，类型为**tuple**，格式为**(N, m, P)**
-* **Private_Secret_Code：**个人暗码，类型为**int**
+* Private_Open_Code：个人明码，类型为**tuple**，格式为**(N, m, P)**
+* Private_Secret_Code：个人暗码，类型为**int**
 
 ---
 
@@ -176,14 +176,14 @@
 
 **参数：**
 
-* **Private_Open_Code：**收件人的个人明码，类型为**tuple**，格式为**(N,m,P)**
+* Private_Open_Code：收件人的个人明码，类型为**tuple**，格式为**(N,m,P)**
 * **Communication_secret_Code：**通信暗码，类型为**int**，最大为**24byte**
 
 **返回值：**元组：**(Communication_Open_Code, Communication_Secret_Code, Key)**
 
-* **Communication_Open_Code：**通信明码，类型为**int**
-* **Communication_Secret_Code：**通信暗码，类型为**int**
-* **Key：**通信密钥，类型为**int**
+* Communication_Open_Code：通信明码，类型为**int**
+* Communication_Secret_Code：通信暗码，类型为**int**
+* Key：通信密钥，类型为**int**
 
 ---
 
@@ -193,9 +193,9 @@
 
 **参数：**
 
-* **Communication_Open_Code：**通信明码，类型为**int**
+* Communication_Open_Code：通信明码，类型为**int**
 
-* **m：**个人明码**(N, m, P)**中的**m**，类型为**int**
-* **Private_Secret_Code：**个人暗码，类型为**int**
+* m：个人明码**(N, m, P)**中的**m**，类型为**int**
+* Private_Secret_Code：个人暗码，类型为**int**
 
 返回值：通信密钥**Key**，类型为**int**
