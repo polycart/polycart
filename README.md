@@ -29,3 +29,12 @@ All in all, the update includes:
 
 * Add **serverbase.py** in **Base**
 * Read **README.md** in **Base** for more information
+
+## UPD_3.2_2
+
+* Add **server,client** in **Base**, put things in it
+* Add **usersdb.py** in **Base\server**
+* Add **clientbase.py** in **Base\client**
+* Modify **serverbase.py**, add its functions
+* Read **README.md** in **Base** for more information
+

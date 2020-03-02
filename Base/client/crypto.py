@@ -47,5 +47,5 @@ def Make_Communication_Code(Private_Open_Code, Communication_Secret_Code):
 	return (Communication_Open_Code, Communication_Secret_Code, Key)
 
 def Make_Key(Communication_Open_Code, m, Private_Secret_Code):
-	Key = Pow(Communication_Open_Code, Communication_Secret_Code, m)
+	Key = Pow(Communication_Open_Code, Private_Secret_Code, m)
 	return Key

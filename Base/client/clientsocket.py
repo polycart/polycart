@@ -1,7 +1,7 @@
 from socket import *
 import time
 class TcpCliSock:
-	def __init__(self, host = '175.24.57.48', port = 21567, bufsiz = 1024):
+	def __init__(self, host = '39.96.48.80', port = 21567, bufsiz = 1024):
 		
 		self.host = host
 		self.port = port
@@ -21,9 +21,8 @@ class TcpCliSock:
 	def send(self, sign, data):
 		if(self.state != 'Connected'):
 			return False
-		if sign != None:
-			self.sock.send(sign.encode())
-			time.sleep(0.1)
+		self.sock.send(sign.encode())
+		time.sleep(0.1)
 		if data == None: return True
 		if(isinstance(data, str)):
 			self.sock.send(data.encode())
