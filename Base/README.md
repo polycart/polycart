@@ -87,6 +87,8 @@
 
 关闭客户端套接字
 
+
+
 ## pyDes.py
 
 由**MIT**开发，**DES**加密算法的python实现，支持**3DES**
@@ -94,6 +96,8 @@
 > DES全称为Data Encryption Standard，即数据加密标准，是一种使用[密钥加密](https://baike.baidu.com/item/密钥加密/5928903)的块算法，1977年被[美国联邦政府](https://baike.baidu.com/item/美国联邦政府/8370227)的国家标准局确定为[联邦资料处理标准](https://baike.baidu.com/item/联邦资料处理标准/3940777)（FIPS），并授权在非密级政府通信中使用，随后该算法在国际上广泛流传开来。需要注意的是，在某些文献中，作为算法的DES称为数据加密算法（Data Encryption Algorithm,DEA），已与作为标准的DES区分开来。
 
 为方便调用，适合本通信系统的加密函数在**crypto.py**中实现
+
+
 
 ## crypto.py
 
@@ -199,3 +203,27 @@
 * Private_Secret_Code：个人暗码，类型为**int**
 
 **返回值：** 通信密钥**Key**，类型为**int**
+
+
+
+## serverbase.py
+
+服务器基本框架，为每一个连接的客户端创建线程分别提供服务
+
+### ServerBase
+
+面向单个客户端的服务类
+
+**构造函数：** *ServerBase(clisock, ip)*
+
+---
+
+#### # server methods
+
+此处实现服务器的各种功能
+
+---
+
+#### run()
+
+线程主函数，主要任务是读取请求标识符并执行相应的操作，并在客户端异常退出时结束该线程
