@@ -1,0 +1,121 @@
+#:kivy 1.11.1
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import sm __main__.sm
+#:import screens __main__.screens
+#:import RoundedButton buttons.RoundedButton
+#:import titleFont cartfonts.titleFont
+#:import LabelInput inputs.LabelInput
+<DefaultGridLayout>:
+    size:(600, 360)
+
+<DefaultScreen>:
+    # set default background color as white
+    size: (800, 480)
+    canvas.before:
+        Color:
+            rgb: 0, 0.8, 1
+        Rectangle:
+            size: root.size
+
+
+<MainScreen>:
+    # main menu on startup
+    DefaultGridLayout:
+        spacing: (20, 20)
+        size_hint: 0.8, 0.8
+        center: self.parent.center
+        rows: 2
+        RoundedButton:
+            font_size:50
+            text: '商品导航'
+            on_press: self.parent.parent.move_to('Lead')
+        RoundedButton:
+            font_size:50
+            text: '已购商品'
+        RoundedButton:
+            font_size:50
+            text: '每日推荐'
+        RoundedButton:
+            font_size:50
+            text: '结算支付'
+            on_press: self.parent.parent.move_to('Login')
+            
+<LoginScreen>:
+    result: result
+    username: username.text
+    password: password.text
+    Label:
+        text: '登录/注册'
+        font_size: 50
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.7
+        font_name: titleFont
+
+    LabelInput:
+        id: username
+        title: '用户名'
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.55
+
+    LabelInput:
+        id: password
+        title: '密 码'
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.45 
+
+    GridLayout:
+        rows: 1
+        size: (250, 50)
+        spacing: (10, 0)
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.30
+        RoundedButton:
+            font_size: 30
+            text: '登录'
+            on_press: self.parent.parent.login()
+        RoundedButton:
+            font_size: 30
+            text: '注册'
+            on_press: self.parent.parent.newuser()
+        RoundedButton:
+            font_size: 30
+            text: '返回'
+            on_press: self.parent.parent.back()
+
+    Label:
+        id: result
+        markup: True
+        text: ''
+        font_size: 30
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.2
+
+<At>:
+    size: 15, 15
+    canvas:
+        Ellipse:
+            size: 15, 15
+            pos: self.pos
+        Rectangle:
+            size: 7.5, 7.5
+            pos: self.center
+
+<LeadScreen>:
+    at: at
+    Label:
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.9
+        font_size: 50
+        font_name: titleFont
+        text: '商品导航'
+
+    At:
+        id: at
+
+    RoundedButton:
+        center_x: self.parent.width * 0.9
+        center_y: self.parent.height * 0.1
+        size: 90, 50
+        font_size: 30
+        text: '返回'
+        on_press: self.parent.back()

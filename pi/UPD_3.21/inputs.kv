@@ -1,0 +1,16 @@
+#:kivy 1.11.1
+#:import titleFont cartfonts.titleFont
+#:import Label kivy.uix.label
+#:import TextInput kivy.uix.textinput
+<LabelInput>:
+	rows: 1
+	size: (300, 30)
+	text: input.text
+	Label:
+		size_hint_x: 0.5
+		id: label
+		font_name: titleFont
+		font_size: 27
+		text: root.title
+	TextInput:
+		id: input
