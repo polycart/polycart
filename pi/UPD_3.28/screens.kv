@@ -1,0 +1,159 @@
+#:kivy 1.11.1
+#:import SlideTransition kivy.uix.screenmanager.SlideTransition
+#:import sm __main__.sm
+#:import screens __main__.screens
+#:import RoundedButton buttons.RoundedButton
+#:import titleFont cartfonts.titleFont
+#:import LabelInput inputs.LabelInput
+#:import ScrollList scrolllist
+<DefaultGridLayout>:
+    size:(600, 360)
+
+<DefaultScreen>:
+    # set default background color as white
+    size: (800, 480)
+    canvas.before:
+        Color:
+            rgb: 1, 1, 1
+        Rectangle:
+            size: root.size
+            source: 'background.jpg'
+
+
+<MainScreen>:
+    # main menu on startup
+    DefaultGridLayout:
+        spacing: (20, 20)
+        size_hint: 0.8, 0.8
+        center: self.parent.center
+        rows: 2
+        RoundedButton:
+            font_size:50
+            text: '商品导航'
+            on_press: self.parent.parent.move_to('Lead')
+        RoundedButton:
+            font_size:50
+            text: '已购商品'
+        RoundedButton:
+            font_size:50
+            text: '每日推荐'
+        RoundedButton:
+            font_size:50
+            text: '结算支付'
+            on_press: self.parent.parent.move_to('Login')
+            
+<LoginScreen>:
+    result: result
+    username: username.text
+    password: password.text
+    Label:
+        markup: True
+        text: '[color=202020]登录/注册[/color]'
+        font_size: 50
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.75
+        font_name: titleFont
+
+    LabelInput:
+        id: username
+        title: '[color=202020]用户名[/color]'
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.58
+
+    LabelInput:
+        id: password
+        title: '[color=202020]密 码[/color]'
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.48
+
+    GridLayout:
+        rows: 1
+        size: (280, 45)
+        spacing: (15, 0)
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.33
+        RoundedButton:
+            font_size: 27
+            text: '登录'
+            on_press: self.parent.parent.login()
+        RoundedButton:
+            font_size: 27
+            text: '注册'
+            on_press: self.parent.parent.newuser()
+        RoundedButton:
+            font_size: 27
+            text: '返回'
+            on_press: self.parent.parent.back()
+
+    Label:
+        id: result
+        markup: True
+        text: ''
+        font_name: titleFont
+        font_size: 30
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.18
+
+<At>:
+    size: 15, 15
+    canvas:
+        PushMatrix
+        Rotate:
+            angle: root.angle
+            origin: root.center
+        Color:
+            rgba: 1, 0.2, 0.2, root.show_direction
+        Rectangle:
+            id: direct
+            size: 8.5, 8.5
+            pos: self.center
+        Color:
+            rgba: 1, 1, 1, 1
+        Ellipse:
+            size: 15, 15
+            pos: self.pos
+        PopMatrix
+<LeadScreen>:
+    at: at
+    scroll: scroll
+    Label:
+        center_x: self.parent.center_x
+        center_y: self.parent.height * 0.92
+        font_size: 50
+        font_name: titleFont
+        markup: True
+        text: '[color=202020]商品导航[/color]'  
+    Image:
+        source: 'map.jpg'
+        size: 420, 380
+        center: self.parent.width * 0.3, self.parent.height * 0.44
+    At:
+        id: at
+        center: self.parent.center
+
+    LabelInput:
+        size: 250, 30
+        id: name
+        font_size: 23
+        title: '[color=202020]商品名 [/color]'
+        center: self.parent.width * 0.74, self.parent.height * 0.78
+
+    RoundedButton:
+        size: 60, 35
+        center_x: self.parent.width * 0.74 + 160
+        center_y: self.parent.height * 0.78
+        font_size: 23
+        text: '搜索'
+        on_press: self.parent.search()
+
+    ScrollList:
+        id: scroll
+        center: self.parent.width * 0.74 + 30, self.parent.height * 0.39
+
+    RoundedButton:
+        center_x: self.parent.width * 0.1
+        center_y: self.parent.height * 0.92
+        size: 80, 50
+        font_size: 25
+        text: '返回'
+        on_press: self.parent.back()
