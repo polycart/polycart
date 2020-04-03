@@ -1,0 +1,13 @@
+#:kivy 1.11.1
+#:import titleFont cartfonts.titleFont
+
+<RoundedButton>
+    background_color: 0, 0, 0, 0
+    font_name: titleFont
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 0.75) if self.state == 'normal' else (0, 0.4, 0.6, 1)
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            source: 'button.jpg'

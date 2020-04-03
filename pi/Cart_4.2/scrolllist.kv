@@ -1,0 +1,93 @@
+#:kivy 1.11.1
+#:import titleFont cartfonts.titleFont
+#:import labelFont cartfonts.labelFont
+#:import Label kivy.uix.label
+#:import GridLayout kivy.uix.gridlayout
+
+<Infomation>:
+	rows: 1
+	size_hint: 1,None
+	height: 53
+	AsyncImage:
+		size_hint: 0.3, 1
+		source: root.image
+
+	Button:
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: (0, 0.4, 0.9, 0.6) if self.state == 'normal' else (0, 0.2, 0.45, 0.6)
+            RoundedRectangle:
+                pos: self.pos
+                size: self.size
+        text_size: self.width * 0.8, self.height
+        halign: 'left'
+        valign: 'middle'
+        font_size: 19
+        font_name: labelFont
+		mark_up: True
+		text: root.text
+        on_press: self.parent.parent.parent.parent.show(self.parent.goodspos, self.parent.image, self.parent.text)
+
+<Advertisement>:
+    cols: 1
+    size_hint: 1, None
+    height: 355
+    AsyncImage:
+        size_hint: 1, 1.9
+        source: root.image
+    Label:
+        text: root.text
+    
+<ScrollList>:
+	size: 310, 320
+	do_scroll_x: False
+    do_scroll_y: True
+    layout: layout
+    siz: 13
+    GridLayout
+    	cols:1
+    	id: layout
+    	spacing: 5
+    	size_hint_x: 1
+        size_hint_y: None
+        height: root.high * root.siz
+        Advertisement:
+        	image: 'http://39.96.48.80/ads/wahaha.jpg'
+        	text: 'a'
+        Advertisement:
+        	image: 'http://39.96.48.80/ads/cola.jpg'
+        	text: 'b'
+        Advertisement:
+        	image: 'http://39.96.48.80/map.jpg'
+        	text: 'c'
+        Infomation:
+        	image: 'http://39.96.48.80/map.jpg'
+        	text: 'd'
+        Infomation:
+        	image: 'http://39.96.48.80/map.jpg'
+        	text: 'e'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
+        Infomation:
+            image: 'http://39.96.48.80/map.jpg'
+            text: 'f'
