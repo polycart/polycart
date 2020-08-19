@@ -18,7 +18,7 @@ def init():
     # config cursor and fullscreen, also can be write in config.ini
     Config.set('graphics', 'width', 800)
     Config.set('graphics', 'height', 480)
-    Config.set('graphics', 'fullscreen', 0)
+#    Config.set('graphics', 'fullscreen', 0)
     Config.set('graphics', 'show_cursor', 1)
     Config.set('graphics', 'maxfps', 24)
     Config.set('kivy', 'log_level', 'trace')
