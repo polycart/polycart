@@ -9,6 +9,10 @@ from PIL import Image
 
 
 class Detection:
+    ''' 使用时, 通过 Detection.get_instance() 获取实例.
+    在程序初始化时, 调用 Detection.get_instance().init() 来载入模型,
+    以提高第一次的识别速度.
+    '''
     detection = None
 
     @classmethod
@@ -23,6 +27,7 @@ class Detection:
         self.input_size = 416
         self.inited = False
         self.cnt = 0
+        self.img_path = './cv_test1.jpg'  # 默认测试图片路径
 
     def init(self):
         if self.inited:
@@ -91,10 +96,10 @@ class Detection:
 if __name__ == '__main__':
     dection = Detection.get_instance()
     dection.init()
-    dection.img_path = './cv_test1.jpg'
-    print(dection.get_commodities())
-    dection.img_path = './cv_test2.jpg'
-    print(dection.get_commodities())
     dection.img_path = './cv_test3.jpg'
-    print(dection.get_commodities())
+    print(dection.get_commodities(), dection.exec_time)
+    dection.img_path = './cv_test2.jpg'
+    print(dection.get_commodities(), dection.exec_time)
+    dection.img_path = './cv_test1.jpg'
+    print(dection.get_commodities(), dection.exec_time)
     pass
