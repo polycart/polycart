@@ -14,7 +14,6 @@ from kivy.uix.bubble import Bubble
 import time
 from recognize import *
 from location import Location
-location = Location()
 client = ClientBase()
 cartinit.init()
 cart_pos = (0,0)
@@ -167,7 +166,7 @@ class LeadScreen(DefaultScreen):
         Clock.schedule_interval(self.update_at, 0.25)
 
     def update_at(self, dt):
-        at_x, at_y, at_z = location.get_pos()
+        at_x, at_y, at_z = Location.get_pos()
         self.at.center = at_x, at_y
         pass
     
