@@ -176,3 +176,11 @@ Mkfile.old
 dkms.conf
 .DS_Store
 *.swp
+PolyCart/Cart/yolov3.data-00000-of-00002
+PolyCart/Cart/yolov3.data-00001-of-00002
+PolyCart/Cart/yolov3.index
+PolyCart/Cart/yolov3.weights
+PolyCart/Cart/yolov3.index
+PolyCart/Cart/yolov3.data-00001-of-00002
+PolyCart/Cart/yolov3.data-00000-of-00002
+PolyCart/Cart/yolov3.weights
