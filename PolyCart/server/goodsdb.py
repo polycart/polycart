@@ -10,6 +10,7 @@ class GoodsDataBase:
 				(code text primary key,
 				name text,
 				image text,
+				weight real,
 				price real,
 				pos_x real,
 				pos_y real,
@@ -18,11 +19,12 @@ class GoodsDataBase:
 			pass
 
 
-	def insert(self, code, name, image, price, pos_x, pos_y):
+	def insert(self, code, name, image, weight, price, pos_x, pos_y):
 		try:
-			self.c.execute("insert into goods values (?, ?, ?, ?, ?, ?, ?)",(code, name, image, price, pos_x, pos_y, 0))
+			self.c.execute("insert into goods values (?, ?, ?, ?, ?, ?, ?, ?)",(code, name, image, weight, price, pos_x, pos_y, 0))
 			self.database.commit()
-		except:
+		except Exception as e:
+			print(str(e))
 			return False
 		else:
 			return True
