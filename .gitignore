@@ -184,3 +184,7 @@ PolyCart/Cart/yolov3.index
 PolyCart/Cart/yolov3.data-00001-of-00002
 PolyCart/Cart/yolov3.data-00000-of-00002
 PolyCart/Cart/yolov3.weights
+
+# cv_test images
+*test.jpg
+cv_test*.jpg
