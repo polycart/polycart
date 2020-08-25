@@ -44,22 +44,24 @@ class GoodsListScreen(DefaultScreen):
     scroll = ObjectProperty(None)
     total_price = NumericProperty(0)
     def __init__(self, **kwargs):
-    	super().__init__(**kwargs)
-    	self.refresh()
+        super().__init__(**kwargs)
+        self.refresh()
     def refresh(self):
-    	goodslist = GetCommoditiesInCart()
-    	print(goodslist)
-    	self.scroll.remove()
-    	self.total_price = 0
-    	for id in goodslist:
-    		goods = client.GetGoodsById(str(id))
-    		time.sleep(0.1)
-    		if goods == False:
-    			continue
-    		self.scroll.add_info('http://39.96.48.80/' + goods[2], goods[1] + '\n￥' + str(goods[3]), (goods[4], goods[5]))
-    		self.total_price += float(goods[3])
-    	self.scroll.scroll_y = 1
-    	sm.get_screen('Pay').children[0].setTotalPrice('￥' + ("%.2f" % self.total_price))
+        goodslist = GetCommoditiesInCart()
+        print(goodslist)
+        self.scroll.remove()
+        self.total_price = 0
+        print(goodslist)
+        for id in goodslist:
+            num = goodslist[id]
+            goods = client.GetGoodsById(str(id))
+            time.sleep(0.1)
+            if goods == False:
+                continue
+            self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(num) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
+            self.total_price += float(goods[3]) * num
+        self.scroll.scroll_y = 1
+        sm.get_screen('Pay').children[0].setTotalPrice('￥' + ("%.2f" % self.total_price))
 
     def manualintervention(self):
     	client.RequestMmanualIntervention(cart_pos)

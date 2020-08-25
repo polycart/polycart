@@ -1,4 +1,3 @@
 def GetCommoditiesInCart():
-	return [3127546, 3127547, 3127548, 3127549]
+	return {"50_instant_noodles": 2, "47_instant_noodles": 4, "108_canned_food": 2, "75_drink": 1}
 
-print(GetCommoditiesInCart())
