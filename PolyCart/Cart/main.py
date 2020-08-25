@@ -12,8 +12,10 @@ from kivy.properties import StringProperty, ObjectProperty, NumericProperty
 from kivy.clock import Clock
 from kivy.uix.bubble import Bubble
 import time
-from recognize import *
+from cv_detection import Detection
 from location import Location
+detection = Detection()
+detection.init()
 client = ClientBase()
 cartinit.init()
 cart_pos = (0,0)
@@ -47,11 +49,13 @@ class GoodsListScreen(DefaultScreen):
         super().__init__(**kwargs)
         self.refresh()
     def refresh(self):
-        goodslist = GetCommoditiesInCart()
-        print(goodslist)
+        goodslist = detection.get_instance()
         self.scroll.remove()
         self.total_price = 0
-        print(goodslist)
+        if goodslist == None:
+            self.scroll.add_info('http://39.96.48.80/error.png', '获取商品列表错误\n已申请人工介入', (0, 0))
+            self.manualintervention()
+            return
         for id in goodslist:
             num = goodslist[id]
             goods = client.GetGoodsById(str(id))
@@ -168,8 +172,12 @@ class LeadScreen(DefaultScreen):
         Clock.schedule_interval(self.update_at, 0.25)
 
     def update_at(self, dt):
-        at_x, at_y, at_z = Location.get_pos()
-        self.at.center = at_x, at_y
+        pos = Location.get_pos()
+        if pos == None:
+            client.RequestMmanualIntervention(cart_pos)
+            return
+        cart_pos = (pos[0], pos[1])
+        self.at.center = pos[0], pos[1]
         pass
     
     def search(self):
