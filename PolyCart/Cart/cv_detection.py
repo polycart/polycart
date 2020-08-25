@@ -52,6 +52,8 @@ class Detection:
                   "initialized and is initializing now. "
                   "This will cause low performance")
         original_image = self._read_img()  # TODO: get a frame from camera
+        if original_image is None:
+            return None
         original_image = cv2.cvtColor(original_image, cv2.COLOR_BGR2RGB)
         original_image_size = original_image.shape[:2]
         image_data = utils.image_preporcess(
@@ -77,6 +79,19 @@ class Detection:
 
 
     def _read_img(self):
+        try:
+            cam = cv2.VideoCapture(0)
+            cam.set(cv2.CAP_PROP_FRAME_WIDTH, 1920)
+            cam.set(cv2.CAP_PROP_FRAME_HEIGHT, 1080)
+            ret, frame = cam.read()
+            cam.release()
+            if ret:
+                return cv2.resize(frame, (1600, 1080), interpolation=cv2.INTER_AREA)
+            else:
+                raise ValueError('No image!')
+        except Exception as e:
+            print('Error initializing camera: ', e)
+            return None
         return cv2.imread(self.img_path)
 
     @staticmethod
@@ -96,10 +111,12 @@ class Detection:
 if __name__ == '__main__':
     dection = Detection.get_instance()
     dection.init()
-    dection.img_path = './cv_test3.jpg'
-    print(dection.get_commodities(), dection.exec_time)
-    dection.img_path = './cv_test2.jpg'
-    print(dection.get_commodities(), dection.exec_time)
-    dection.img_path = './cv_test1.jpg'
-    print(dection.get_commodities(), dection.exec_time)
-    pass
+    # dection.img_path = './cv_test3.jpg'
+    # print(dection.get_commodities(), dection.exec_time)
+    # dection.img_path = './cv_test2.jpg'
+    # print(dection.get_commodities(), dection.exec_time)
+    # dection.img_path = './cv_test1.jpg'
+    # print(dection.get_commodities(), dection.exec_time)
+    # pass
+    while True:
+        print(dection.get_commodities())
