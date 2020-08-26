@@ -14,7 +14,7 @@ from kivy.uix.bubble import Bubble
 import time
 from cv_detection import Detection
 from location import Location
-detection = Detection()
+detection = Detection.get_instance()
 detection.init()
 client = ClientBase()
 cartinit.init()
@@ -49,7 +49,7 @@ class GoodsListScreen(DefaultScreen):
         super().__init__(**kwargs)
         self.refresh()
     def refresh(self):
-        goodslist = detection.get_instance()
+        goodslist = detection.get_commodities()
         self.scroll.remove()
         self.total_price = 0
         if goodslist == None:
