@@ -45,6 +45,7 @@ class MainScreen(DefaultScreen):
 class GoodsListScreen(DefaultScreen):
     scroll = ObjectProperty(None)
     total_price = NumericProperty(0)
+    total_weight = NumericProperty(0)
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.refresh()
@@ -52,6 +53,7 @@ class GoodsListScreen(DefaultScreen):
         goodslist = detection.get_commodities()
         self.scroll.remove()
         self.total_price = 0
+        self.total_weight = 0
         if goodslist == None:
             self.scroll.add_info('http://39.96.48.80/error.png', '获取商品列表错误\n已申请人工介入', (0, 0))
             self.manualintervention()
@@ -64,8 +66,21 @@ class GoodsListScreen(DefaultScreen):
                 continue
             self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(num) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
             self.total_price += float(goods[3]) * num
+            self.total_weight += float(goods[7]) * num
         self.scroll.scroll_y = 1
         sm.get_screen('Pay').children[0].setTotalPrice('￥' + ("%.2f" % self.total_price))
+    '''
+    def weight_check(self):
+        weight = get_weight()
+        if(fabs(weight - self.weight) > 2):
+            self.refresh()
+            if(fabs(weight - self.weight) > 2):
+                self.scroll.remove()
+                self.total_price = 0
+                self.total_weight = 0
+                self.scroll.add_info('http://39.96.48.80/error.png', '获取商品列表错误\n已申请人工介入', (0, 0))
+                self.manualintervention()
+    '''
 
     def manualintervention(self):
     	client.RequestMmanualIntervention(cart_pos)
@@ -177,7 +192,7 @@ class LeadScreen(DefaultScreen):
             client.RequestMmanualIntervention(cart_pos)
             return
         cart_pos = (pos[0], pos[1])
-        self.at.center = pos[0], pos[1]
+        self.at.center = self.the_map.x + pos[0], self.the_map.y + pos[1]
         pass
     
     def search(self):

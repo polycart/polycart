@@ -31,7 +31,7 @@ class GoodsDataBase:
 
 	def select(self, code):
 		try:
-			self.c.execute("select code, name, image, price, pos_x, pos_y, number from goods where code = ?", (code,))
+			self.c.execute("select code, name, image, price, pos_x, pos_y, number, weight from goods where code = ?", (code,))
 		except:
 			return None
 		else:
