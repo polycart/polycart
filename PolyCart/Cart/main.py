@@ -70,7 +70,7 @@ class GoodsListScreen(DefaultScreen):
             self.total_price += float(goods[3]) * num
             self.total_weight += float(goods[7]) * num
         if self.weight_check() == 0:
-            self.scroll.add_info('http://39.96.48.80/error.png', '重量错误，请将商品尽可能平铺后刷新\n多次重试依旧错误,请申请人工介入', (0, 0))
+            self.scroll.add_info('http://39.96.48.80/error.png', '重量错误,请重试\n多次错误请申请人工介入', (0, 0))
             self.payable = 0
         else self.payable = 1
         for goods in goods_info:
