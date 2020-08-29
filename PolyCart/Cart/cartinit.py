@@ -22,4 +22,5 @@ def init():
     Config.set('graphics', 'show_cursor', 1)
     Config.set('graphics', 'maxfps', 24)
     Config.set('kivy', 'log_level', 'trace')
+    Config.set('kivy', 'keyboard_mode', 'systemanddock')
     Config.write()
