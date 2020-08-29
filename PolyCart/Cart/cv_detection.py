@@ -72,7 +72,7 @@ class Detection:
         bboxes = utils.nms(bboxes, 0.45, method='nms')
         image = utils.draw_bbox(original_image, bboxes)
         image = Image.fromarray(image)
-        image.save(str(self.cnt) + 'test.jpg')
+        image.save('%02i_test.jpg' % self.cnt)
         self.cnt += 1
 
         return self._get_commodities_from_bboxes(bboxes)
