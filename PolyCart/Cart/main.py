@@ -14,6 +14,7 @@ from kivy.uix.bubble import Bubble
 import time
 from cv_detection import Detection
 from location import Location
+from weight import Weight
 detection = Detection.get_instance()
 detection.init()
 client = ClientBase()
@@ -78,7 +79,7 @@ class GoodsListScreen(DefaultScreen):
         sm.get_screen('Pay').children[0].setTotalPrice('￥' + ("%.2f" % self.total_price))
 
     def weight_check(self):
-        weight = 0
+        weight = Weight.get_weight()
         if fabs(weight - self.weight) > 10:
             return false
         else return true
