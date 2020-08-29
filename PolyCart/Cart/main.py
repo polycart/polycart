@@ -48,7 +48,7 @@ class GoodsListScreen(DefaultScreen):
     total_weight = NumericProperty(0)
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.refresh()
+        self.payable = 0
     def refresh(self):
         goodslist = detection.get_commodities()
         self.scroll.remove()
@@ -58,29 +58,30 @@ class GoodsListScreen(DefaultScreen):
             self.scroll.add_info('http://39.96.48.80/error.png', '获取商品列表错误\n已申请人工介入', (0, 0))
             self.manualintervention()
             return
+        goods_info = []
         for id in goodslist:
             num = goodslist[id]
             goods = client.GetGoodsById(str(id))
             time.sleep(0.1)
             if goods == False:
                 continue
-            self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(num) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
+            goods_info.append(goods)
             self.total_price += float(goods[3]) * num
             self.total_weight += float(goods[7]) * num
+        if self.weight_check() == 0:
+            self.scroll.add_info('http://39.96.48.80/error.png', '重量错误，请将商品尽可能平铺后刷新\n多次重试依旧错误,请申请人工介入', (0, 0))
+            self.payable = 0
+        else self.payable = 1
+        for goods in goods_info:
+            self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(num) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
         self.scroll.scroll_y = 1
         sm.get_screen('Pay').children[0].setTotalPrice('￥' + ("%.2f" % self.total_price))
-    '''
+
     def weight_check(self):
-        weight = get_weight()
-        if(fabs(weight - self.weight) > 2):
-            self.refresh()
-            if(fabs(weight - self.weight) > 2):
-                self.scroll.remove()
-                self.total_price = 0
-                self.total_weight = 0
-                self.scroll.add_info('http://39.96.48.80/error.png', '商品列表与称重不符,请将商品尽可能平铺\n若错误依旧存在,请申请人工介入', (0, 0))
-                self.manualintervention()
-    '''
+        weight = 0
+        if fabs(weight - self.weight) > 10:
+            return false
+        else return true
 
     def manualintervention(self):
     	client.RequestMmanualIntervention(cart_pos)
@@ -91,7 +92,8 @@ class GoodsListScreen(DefaultScreen):
     def show(self, pos, img, name):
         pass
     def move_to(self, name):
-        sm.current = name
+        if self.payable:
+            sm.current = name
 	
 	
 class LoginScreen(DefaultScreen):
