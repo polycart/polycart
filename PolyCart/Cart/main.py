@@ -81,8 +81,8 @@ class GoodsListScreen(DefaultScreen):
     def weight_check(self):
         weight = Weight.get_weight()
         if fabs(weight - self.weight) > 10:
-            return false
-        else return true
+            return False
+        else return True
 
     def manualintervention(self):
     	client.RequestMmanualIntervention(cart_pos)
