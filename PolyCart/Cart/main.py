@@ -78,7 +78,7 @@ class GoodsListScreen(DefaultScreen):
                 self.scroll.remove()
                 self.total_price = 0
                 self.total_weight = 0
-                self.scroll.add_info('http://39.96.48.80/error.png', '获取商品列表错误\n已申请人工介入', (0, 0))
+                self.scroll.add_info('http://39.96.48.80/error.png', '商品列表与称重不符,请将商品尽可能平铺\n若错误依旧存在,请申请人工介入', (0, 0))
                 self.manualintervention()
     '''
 
