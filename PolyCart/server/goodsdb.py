@@ -9,6 +9,7 @@ class GoodsDataBase:
 			self.c.execute("""create table goods
 				(code text primary key,
 				name text,
+				name1 text,
 				image text,
 				weight real,
 				price real,
@@ -19,9 +20,9 @@ class GoodsDataBase:
 			pass
 
 
-	def insert(self, code, name, image, weight, price, pos_x, pos_y):
+	def insert(self, code, name, name1, image, weight, price, pos_x, pos_y):
 		try:
-			self.c.execute("insert into goods values (?, ?, ?, ?, ?, ?, ?, ?)",(code, name, image, weight, price, pos_x, pos_y, 0))
+			self.c.execute("insert into goods values (?, ?, ?, ?, ?, ?, ?, ?, ?)",(code, name, name1, image, weight, price, pos_x, pos_y, 0))
 			self.database.commit()
 		except Exception as e:
 			print(str(e))
@@ -37,10 +38,10 @@ class GoodsDataBase:
 		else:
 			return self.c.fetchone()
 
-	def search(self, name):
-		name = '%' + name + '%'
+	def search(self, name1):
+		name1 = '%' + name1 + '%'
 		try:
-			self.c.execute("select name, image, price, pos_x, pos_y from goods where name like ?", (name,))
+			self.c.execute("select name, image, price, pos_x, pos_y from goods where name1 like ?", (name1,))
 		except:
 			return []
 		else:
