@@ -187,12 +187,18 @@ class LeadScreen(DefaultScreen):
         Clock.schedule_interval(self.update_at, 0.25)
 
     def update_at(self, dt):
-        pos = Location.get_pos()
-        if pos == None:
+        global cart_pos
+        pos1 = Location.get_pos()
+        pos2 = Location.get_pos()
+        pos3 = Location.get_pos()
+        if pos1 == None or pos2 == None or pos3 ==None:
             client.RequestMmanualIntervention(cart_pos)
             return
+        pos = [0, 0]
+        pos[0] = (pos1[0] + pos2[0] + pos3[0]) / 3
+        pos[1] = (pos1[1] + pos2[1] + pos3[1]) / 3
         cart_pos = (pos[0], pos[1])
-        self.at.center = self.the_map.x + pos[0], self.the_map.y + pos[1]
+        self.at.center = self.the_map.x + pos[0] * 420 / 4, self.the_map.y + pos[1] * 380 / 5
         pass
     
     def search(self):
