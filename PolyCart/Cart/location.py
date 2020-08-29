@@ -10,8 +10,8 @@ class Location:
     #                    (4.0, 7.8, 0.0),
     #                    (0.8, 10.2, 0.0))
     anchor_location = ((0.0, 0.0, 0.0),
-                       (0.0, 0.8, 0.0),
-                       (0.8, 0.0, 0.0))
+                       (2.25, 0.0, 0.0),
+                       (0.0, 2.25, 0.0))
     SO_PATH = './trilateration.so'
     SERIAL_PATH = '/dev/serial/by-id/usb-1a86_USB2.0-Serial-if00-port0'
 
