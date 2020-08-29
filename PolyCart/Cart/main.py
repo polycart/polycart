@@ -72,7 +72,8 @@ class GoodsListScreen(DefaultScreen):
         if self.weight_check() == 0:
             self.scroll.add_info('http://39.96.48.80/error.png', '重量错误,请重试\n多次错误请申请人工介入', (0, 0))
             self.payable = 0
-        else self.payable = 1
+        else:
+            self.payable = 1
         for goods in goods_info:
             self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(num) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
         self.scroll.scroll_y = 1
@@ -82,7 +83,8 @@ class GoodsListScreen(DefaultScreen):
         weight = Weight.get_weight()
         if fabs(weight - self.weight) > 10:
             return False
-        else return True
+        else:
+            return True
 
     def manualintervention(self):
     	client.RequestMmanualIntervention(cart_pos)
