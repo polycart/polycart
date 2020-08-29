@@ -81,7 +81,7 @@ class GoodsListScreen(DefaultScreen):
 
     def weight_check(self):
         weight = Weight.get_weight()
-        if fabs(weight - self.weight) > 10:
+        if fabs(weight - self.total_weight) > 10:
             return False
         else:
             return True
