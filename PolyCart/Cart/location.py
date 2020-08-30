@@ -100,7 +100,7 @@ class Location:
         entry_items = mc_messages.split()
         mask = int(entry_items[1], 16)
         if mask != 7:
-            print('mask != 7')
+            print('mask != 7, mask = %i' % mask)
             return None
         x = int(entry_items[2], 16)
         y = int(entry_items[3], 16)
