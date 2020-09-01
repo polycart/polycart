@@ -12,9 +12,9 @@ from kivy.properties import StringProperty, ObjectProperty, NumericProperty
 from kivy.clock import Clock
 from kivy.uix.bubble import Bubble
 import time
-from cv_detection import Detection
-from location import Location
-from weight import Weight
+from demo_cv_detection import Detection
+from demo_location import Location
+from demo_weight import Weight
 detection = Detection.get_instance()
 detection.init()
 client = ClientBase()
@@ -62,7 +62,8 @@ class GoodsListScreen(DefaultScreen):
         goods_info = []
         for id in goodslist:
             num = goodslist[id]
-            goods = client.GetGoodsById(str(id))
+            goods = list(client.GetGoodsById(str(id)))
+            goods.append(num)
             time.sleep(0.1)
             if goods == False:
                 continue
@@ -75,7 +76,7 @@ class GoodsListScreen(DefaultScreen):
         else:
             self.payable = 1
         for goods in goods_info:
-            self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(num) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
+            self.scroll.add_info('http://39.96.48.80/' + str(goods[2]), str(goods[1]) + '\n[' + str(goods[8]) + 'X]' + '￥' + str(goods[3]), (goods[4], goods[5]))
         self.scroll.scroll_y = 1
         sm.get_screen('Pay').children[0].setTotalPrice('￥' + ("%.2f" % self.total_price))
 
